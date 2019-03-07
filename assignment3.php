@@ -24,7 +24,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        if($dbType == "classes") {
+            echo "Class Name: " . $row["name"]. "  -Trainer: " . $row["trainer"]. " -Date/Time: " . $row["time"]. "<br>";
+        } else {
+            echo "Id: " . $row["patron_id"]. "  -Name: " . $row["name"]. " -Email: " . $row["email"]. " Schedule: " . $row["schedule"] . "<br>";
+        }
     }
 } else {
     echo "0 results";
