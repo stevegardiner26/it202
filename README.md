@@ -1,7 +1,7 @@
 # it202 
 An IT Course entitling web development with MySQL, HTML, XML, CSS, JS, PHP etc. I use AFS to remotely connect to a site extension.
 
-These forms are live at web.njit.edu/~spg28
+These forms are live at https://web.njit.edu/~spg28/
 
 **Assignment 1**
 
