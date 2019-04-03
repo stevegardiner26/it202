@@ -31,7 +31,7 @@ if($type == 'create') {
     $conn->close();
 } else {
     //Verify User
-    $sql = "SELECT * FROM patrons WHERE `patron_id` = " . $id;
+    $sql = "SELECT * FROM patrons WHERE `patron_id` = " . $id . "AND `name` = " . $name;
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
