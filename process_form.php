@@ -31,40 +31,41 @@ if($type == 'create') {
     $conn->close();
 } else {
     //Verify User
-    if($type == 'view') {
-        $sql = "SELECT * FROM patrons WHERE `patron_id` = " . $id;
-        $result = $conn->query($sql);
-        $result2 = $conn->query("SELECT * FROM courses WHERE `patron_id` = `" .$id."`");
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '
-                    <div style="margin: auto;">
-                        <h1>Patron Name: ' . $row['name'] . '</h1>
-                        <h2>Patron Id: ' . $row['patron_id'] . '</h2>
-                        <h2>Patron Email: ' . $row['email'] . '</h2>
-                    </div>
-                ';
-            }
-            if($result2->num_rows > 0) {
+    $sql = "SELECT * FROM patrons WHERE `patron_id` = `" . $id . "` AND WHERE `name` = `" . $name . "`";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '
+                  <div style="margin: auto;">
+                      <h1>Patron Name: ' . $row['name'] . '</h1>
+                      <h2>Patron Id: ' . $row['patron_id'] . '</h2>
+                      <h2>Patron Email: ' . $row['email'] . '</h2>
+                  </div>
+                  <h2>Classes</h2>
+               ';
+        }
+        if($type == 'view') {
+            $result2 = $conn->query("SELECT * FROM courses WHERE `patron_id` = `" . $id . "`");
+            if ($result2->num_rows > 0) {
                 echo '<table class="table" style="border: 1px solid black;"><tr><th>Class Name</th><th>Trainer</th><th>Times</th></tr>';
                 while ($row2 = $result2->fetch_assoc()) {
                     echo '
-                        <tr>
-                            <td>'.$row2['name'].'</td>
-                            <td>'.$row2['trainer'].'</td>
-                            <td>'.$row2['times'].'</td>
-                        </tr>
-                    ';
+                       <tr>
+                           <td>' . $row2['name'] . '</td>
+                           <td>' . $row2['trainer'] . '</td>
+                           <td>' . $row2['times'] . '</td>
+                       </tr>
+                   ';
                 }
                 echo '</table>';
             } else {
                 echo "You are not registered for any classes yet.";
                 echo "<br><a href='assignment4.php'>Return to Form</a>";
             }
-        } else {
-            echo "Your Account is Invalid!";
-            echo "<br><a href='assignment4.php'>Return to Form</a>";
         }
+    } else {
+        echo "Your Account is Invalid!";
+        echo "<br><a href='assignment4.php'>Return to Form</a>";
     }
     $conn->close();
 }

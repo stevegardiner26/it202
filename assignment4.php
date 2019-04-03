@@ -150,6 +150,6 @@
         } else {
 
         }
-        if(inServer === false) alert('Your name couldn\'t be found');
+        //if(inServer === false) alert('Your name couldn\'t be found');
     }
 </script>
