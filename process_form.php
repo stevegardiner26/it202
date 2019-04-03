@@ -26,15 +26,8 @@ if ($conn->connect_error) {
 if($type == 'create') {
     $sql = "INSERT INTO patrons (`name`, `patron_id`, `email`, `schedule`) VALUES (`" . $name . "`,`" . $id . "`,`" . $email . "`,``)";
     $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "Congrats! You created an account with the user of " .$name. ", the id of " .$id. ",and the email of " .$email;
-            echo "<a href='assignment4.php'>Return to Form</a>";
-        }
-    } else {
-        echo "0 results";
-    }
+    echo "Congrats! You created an account with the user of " .$name. ", the id of " .$id. ",and the email of " .$email;
+    echo "<a href='assignment4.php'>Return to Form</a>";
     $conn->close();
 } else {
     //Verify User
