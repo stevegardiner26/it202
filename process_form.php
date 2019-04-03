@@ -31,7 +31,7 @@ if($type == 'create') {
     $conn->close();
 } else {
     //Verify User
-    $sql = "SELECT * FROM patrons WHERE `patron_id` = `" . $id . "` AND WHERE `name` = `" . $name . "`";
+    $sql = "SELECT * FROM patrons WHERE `patron_id` = " . $id . " AND WHERE `name` = " . $name;
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -45,7 +45,7 @@ if($type == 'create') {
                ';
         }
         if($type == 'view') {
-            $result2 = $conn->query("SELECT * FROM courses"); //13234579
+            $result2 = $conn->query("SELECT * FROM courses"); //13234579 // WHERE `patron_id` = `" . $id . "`"
             if ($result2->num_rows > 0) {
                 echo '<table class="table" style="border: 1px solid black;"><tr><th>Class Name</th><th>Trainer</th><th>Times</th></tr>';
                 while ($row2 = $result2->fetch_assoc()) {
