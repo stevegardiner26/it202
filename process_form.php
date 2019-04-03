@@ -45,7 +45,7 @@ if($type == 'create') {
                ';
         }
         if($type == 'view') {
-            $result2 = $conn->query("SELECT * FROM courses"); //13234579 // WHERE `patron_id` = `" . $id . "`"
+            $result2 = $conn->query("SELECT * FROM courses WHERE `patron_id` = " . $id);
             if ($result2->num_rows > 0) {
                 echo '<table class="table" style="border: 1px solid black;"><tr><th>Class Name</th><th>Trainer</th><th>Times</th></tr>';
                 while ($row2 = $result2->fetch_assoc()) {
