@@ -1,9 +1,3 @@
-<?php
-$servername = "sql.njit.edu";
-$username = "spg28";
-$password = "ZbkSoE9x";
-$dbname = "spg28";
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,13 +87,6 @@ $dbname = "spg28";
             email: 'pablo@gmail.com',
         }
     ];
-
-    var form = document.getElementById('my-form');
-    /*if (form.attachEvent) {
-        form.attachEvent("submit", validate());
-    } else {
-        form.addEventListener("submit", validate);
-    }*/
 
     function validate(e) {
 

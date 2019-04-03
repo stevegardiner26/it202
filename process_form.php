@@ -41,6 +41,23 @@ if($type == 'create') {
 
 }
 
+/* vwhile($row = $result->fetch_assoc()) {
+            echo '
+                <div style="margin: auto;">
+                    <h1>Patron Name: ' . $row['name'] . '</h1>
+                    <h2>Patron Id: ' . $row['patron_id'] . '</h2>
+                    <h2>Patron Email: ' . $row['email'] . '</h2>
+                    <table class="table" style="border: 1px solid black;">
+
+                    </table>
+                </div>
+            ';
+            $patron_schedule = $row['schedule'];
+            foreach ($patron_schedule as $schedules) {
+                $schedules[''];
+            }
+        } */
+
 
 
 
