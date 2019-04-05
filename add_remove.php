@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['class'];
-    $times = $_POST['id'];
+    $times = $_POST['time'];
     $trainer = $_POST['trainer'];
     $id = $_POST['id'];
 } else {
