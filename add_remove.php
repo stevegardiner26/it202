@@ -42,18 +42,18 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No Classes!';
 }
-
+echo "(" . $id . ", '" . $name . "', '" . $trainer . "', '" . $times . "')";
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($conn->query("INSERT INTO courses (`patron_id`, `name`, `trainer`, `times`) VALUES (" . $id . " ,'" . $name . "','" . $trainer . "','" . $times . "')") === TRUE) {
+    if ($conn->query("INSERT INTO courses (`patron_id`, `name`, `trainer`, `times`) VALUES (" . $id . ", '" . $name . "', '" . $trainer . "', '" . $times . "')") === TRUE) {
         echo "New class scheduled successfully<br><br>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error . "<br><br>";
     }
 } else {
     if ($conn->query("DELETE FROM courses WHERE `patron_id` = ".$id." AND `name` = '".$name."'") === TRUE) {
         echo "New class deleted successfully<br><br>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error . "<br><br>";
     }
 }
 
