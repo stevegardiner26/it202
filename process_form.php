@@ -63,6 +63,28 @@ if($type == 'create') {
                 echo "You are not registered for any classes yet.";
                 echo "<br><a href='assignment4.php'>Return to Form</a>";
             }
+        } else if($type == 'add') {
+            echo '<form action="add_remove.php" method="post" style="margin: auto;">
+                    <h3>Schedule a Class</h3>
+                    <label for="id">ID:</label>
+                    <input name="id" type="text" value="'.$id.'" disabled="disabled">
+                    <label for="class">Class Name:</label>
+                    <input name="class" type="text">
+                    <label for="trainer">Trainer:</label>
+                    <input name="trainer" type="text">
+                    <label for="time">Time:</label>
+                    <input name="time" type="text">
+                 </form>';
+            echo "<br><a href='assignment4.php'>Return to Form</a>";
+        } else if ($type == 'remove') {
+            echo '<form action="add_remove.php" method="get" style="margin: auto;">
+                    <h3>Remove a Class</h3>
+                    <label for="id">ID:</label>
+                    <input name="id" type="text" value="'.$id.'" disabled="disabled">
+                    <label for="class">Class Name:</label>
+                    <input name="class" type="text">
+                 </form>';
+            echo "<br><a href='assignment4.php'>Return to Form</a>";
         }
     } else {
         echo "Your Account is Invalid!";
