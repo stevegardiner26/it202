@@ -74,6 +74,7 @@ if($type == 'create') {
                     <input name="trainer" type="text">
                     <label for="time">Time:</label>
                     <input name="time" type="text">
+                    <input type="submit" value="Add Class">
                  </form>';
             echo "<br><a href='assignment4.php'>Return to Form</a>";
         } else if ($type == 'remove') {
@@ -83,6 +84,7 @@ if($type == 'create') {
                     <input name="id" type="text" value="'.$id.'" disabled="disabled">
                     <label for="class">Class Name:</label>
                     <input name="class" type="text">
+                    <input type="submit" value="Remove Class">
                  </form>';
             echo "<br><a href='assignment4.php'>Return to Form</a>";
         }
