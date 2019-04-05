@@ -57,5 +57,5 @@ if ($result2->num_rows > 0) {
     echo '</table>';
     echo "<br><a href='assignment4.php'>Return to Form</a>";
 }
-
+$conn->close();
 ?>
