@@ -136,20 +136,6 @@
     }
 
     function verify(name, id, type) {
-        var inServer = false;
-        /*var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","getuser.php?q="+str,true);
-        xmlhttp.send();*/
-        if(type == 'create') {
-            inServer = true;
-        } else {
 
-        }
-        //if(inServer === false) alert('Your name couldn\'t be found');
     }
 </script>
