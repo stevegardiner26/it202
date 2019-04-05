@@ -67,7 +67,7 @@ if($type == 'create') {
             echo '<form action="add_remove.php" method="post" style="margin: auto;">
                     <h3>Schedule a Class</h3>
                     <label for="id">ID:</label>
-                    <input name="id" type="number" value="'.$id.'" disabled="disabled">
+                    <input name="id" type="number" value="'.$id.'">
                     <label for="class">Class Name:</label>
                     <input name="class" type="text">
                     <label for="trainer">Trainer:</label>
@@ -81,7 +81,7 @@ if($type == 'create') {
             echo '<form action="add_remove.php" method="get" style="margin: auto;">
                     <h3>Remove a Class</h3>
                     <label for="id">ID:</label>
-                    <input name="id" type="text" value="'.$id.'" disabled="disabled">
+                    <input name="id" type="text" value="'.$id.'">
                     <label for="class">Class Name:</label>
                     <input name="class" type="text">
                     <input type="submit" value="Remove Class">
@@ -94,25 +94,4 @@ if($type == 'create') {
     }
     $conn->close();
 }
-
-/* vwhile($row = $result->fetch_assoc()) {
-            echo '
-                <div style="margin: auto;">
-                    <h1>Patron Name: ' . $row['name'] . '</h1>
-                    <h2>Patron Id: ' . $row['patron_id'] . '</h2>
-                    <h2>Patron Email: ' . $row['email'] . '</h2>
-                    <table class="table" style="border: 1px solid black;">
-
-                    </table>
-                </div>
-            ';
-            $patron_schedule = $row['schedule'];
-            foreach ($patron_schedule as $schedules) {
-                $schedules[''];
-            }
-        } */
-
-
-
-
 ?>

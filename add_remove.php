@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_GET['class'];
     $id = $_GET['id'];
 }
-echo 'POST: ' . $_POST . '<br><br>';
 
 $result = $conn->query("SELECT * FROM courses WHERE `patron_id` = " . $id);
 if ($result->num_rows > 0) {
@@ -41,9 +40,9 @@ if ($result->num_rows > 0) {
     }
     echo '</table><br><br><br>';
 } else {
-    echo 'No Classes!';
+    echo 'This Account does not have any classes! <br><br>';
 }
-echo "(" . $id . ", '" . $name . "', '" . $trainer . "', '" . $times . "')";
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->query("INSERT INTO courses (`patron_id`, `name`, `trainer`, `times`) VALUES (" . $id . ", '" . $name . "', '" . $trainer . "', '" . $times . "')") === TRUE) {
         echo "New class scheduled successfully<br><br>";
@@ -71,9 +70,10 @@ if ($result2->num_rows > 0) {
                    ';
     }
     echo '</table>';
-    echo "<br><a href='assignment4.php'>Return to Form</a>";
+    echo "<br><a href='assignment4.php'>Return to Form</a> <br><br>";
 } else {
     echo"No Classes Currently Assigned!";
+    echo "<br><a href='assignment4.php'>Return to Form</a> <br><br>";
 }
 
 $conn->close();
