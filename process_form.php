@@ -67,7 +67,7 @@ if($type == 'create') {
             echo '<form action="add_remove.php" method="post" style="margin: auto;">
                     <h3>Schedule a Class</h3>
                     <label for="id">ID:</label>
-                    <input name="id" type="text" value="'.$id.'" disabled="disabled">
+                    <input name="id" type="number" value="'.$id.'" disabled="disabled">
                     <label for="class">Class Name:</label>
                     <input name="class" type="text">
                     <label for="trainer">Trainer:</label>
