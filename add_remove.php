@@ -21,12 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $times = $_POST['id'];
     $trainer = $_POST['trainer'];
     $id = $_POST['id'];
+    echo"POST METHOD";
 } else {
     $name = $_GET['class'];
     $id = $_GET['id'];
 }
 
-
+echo"Before Select";
 $result = $conn->query("SELECT * FROM courses WHERE `patron_id` = " . $id);
 if ($result->num_rows > 0) {
     echo '<h2>Before:</h2><table class="table" style="border: 1px solid black;"><tr><th>Class Name</th><th>Trainer</th><th>Times</th></tr>';
@@ -40,14 +41,20 @@ if ($result->num_rows > 0) {
                    ';
     }
     echo '</table><br><br><br>';
+} else {
+    echo 'No Classes!';
 }
+echo"After Select";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo"Posty Courses";
     $conn->query("INSERT INTO courses (`patron_id`, `name`, `trainer`, `times`) VALUES (`" . $id . "`,`" . $name . "`,`" . $trainer . "`,`" . $times . "`)");
 } else {
+    echo"Delete them courses";
     $conn->query("DELETE FROM courses WHERE `patron_id` = ".$id." AND `name` = '".$name."'");
 }
 
+echo"Before select 2";
 $result2 = $conn->query("SELECT * FROM courses WHERE `patron_id` = " . $id);
 if ($result2->num_rows > 0) {
     echo '<h2>After:</h2><table class="table" style="border: 1px solid black;"><tr><th>Class Name</th><th>Trainer</th><th>Times</th></tr>';
@@ -62,6 +69,9 @@ if ($result2->num_rows > 0) {
     }
     echo '</table>';
     echo "<br><a href='assignment4.php'>Return to Form</a>";
+} else {
+    echo"No Classes Currently Assigned!";
 }
+echo"again";
 $conn->close();
 ?>
