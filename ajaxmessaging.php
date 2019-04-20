@@ -24,7 +24,8 @@ if ($conn->connect_error) {
 }
 
 if ($type == 'write') {
-    $result = $conn->query("SELECT * FROM chats WHERE `name` = " . $nameP . " AND `password` = " . $password);
+    $sql2 = "SELECT * FROM chats WHERE `name` = " . $nameP;
+    $result = $conn->query($sql2);
     if ($result->num_rows > 0) {
         $sql = "UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`='" . $nameP . "' AND `password`='" . $password . "'";
         if($conn->query($sql)) {
@@ -33,7 +34,7 @@ if ($type == 'write') {
             $result4 = 'Error: ' . $sql . ' ' . $conn->error;
         }
     } else {
-        $sql = "INSERT INTO chats `name`=?, `password`, `chat_content`=? VALUES ('".$nameP."','".$password."','".$content."')";
+        $sql = "INSERT INTO chats (`name`, `password`, `chat_content`) VALUES ('".$nameP."','".$password."','".$content."')";
         if($conn->query($sql)) {
             $result4 = 'Success';
         } else {
