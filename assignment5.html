@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>AJAX Messaging Application</title>
 </head>
-<body>
+<body onload="getNames()">
     <div class="container">
         <h1 style="text-align: center">Ajax Chat</h1>
-        <h6>Active Chatters: <span id="names"></span></h6>
+        <h6 style="margin-left: 15px;">Active Chatters: <span id="names"></span></h6>
         <div class="chatc chat1">
             <label for="name1">Enter your Name:</label>
             <input name="name1" id="name1" type="text"><br>
@@ -71,7 +71,7 @@
 <style>
     .container {
         font-family: sans-serif;
-        width: 800px;
+        width: 850px;
         background: lightgray;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
