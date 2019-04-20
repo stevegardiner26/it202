@@ -41,6 +41,14 @@ if ($type == 'write') {
     $result->fetch();
     $result->close();
     $result4 = $cont;
+} else if ($type == 'name') {
+    $result = $conn->prepare("SELECT `name` FROM chats");
+    $result->execute();
+    $result->store_result();
+    $result->bind_result($cont);
+    $result->fetch();
+    $result->close();
+    $result4 = $cont;
 }
 
 echo $result4;

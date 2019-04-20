@@ -7,6 +7,7 @@
 <body>
     <div class="container">
         <h1 style="text-align: center">Ajax Chat</h1>
+        <h6>Active Chatters: <span id="names"></span></h6>
         <div class="chatc chat1">
             <label for="name1">Enter your Name:</label>
             <input name="name1" id="name1" type="text"><br>
@@ -51,6 +52,19 @@
         };
         xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
         xmlhttp2.send();
+    }
+
+    function getNames() {
+        //make an ajax call to retrieve the chat from the name
+        var xmlhttp3 = new XMLHttpRequest();
+        xmlhttp3.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                document.getElementById('names').innerHTML = this.responseText;
+            }
+        };
+        xmlhttp3.open("GET", "ajaxmessaging.php?type=name", true);
+        xmlhttp3.send();
     }
 </script>
 
