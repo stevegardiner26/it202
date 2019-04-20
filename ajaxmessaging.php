@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 if ($type == 'write') {
-    $sql2 = "SELECT * FROM chats WHERE `name` = " . $nameP;
+    $sql2 = "SELECT * FROM chats WHERE `name`='" . $nameP . "'";
     $result = $conn->query($sql2);
     if ($result->num_rows > 0) {
         $sql = "UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`='" . $nameP . "' AND `password`='" . $password . "'";
