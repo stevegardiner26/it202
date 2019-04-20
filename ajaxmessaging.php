@@ -27,7 +27,7 @@ if ($type == 'write') {
     /*$result = $conn->query("SELECT * FROM chats WHERE `name` = " . $nameP . " AND `password` = " . $password);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {*/
-    if($conn->query("UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`=`" . $nameP . "` AND `password`=`" . $password . "`")) {
+    if($conn->query("UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`='" . $nameP . "' AND `password`='" . $password . "'")) {
         $result4 = 'Success';
     } else {
         $result4 = 'Error: ' . $conn->error;
