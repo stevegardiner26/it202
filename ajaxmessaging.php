@@ -42,13 +42,12 @@ if ($type == 'write') {
     $result->close();
     $result4 = $cont;
 } else if ($type == 'name') {
-    $result = $conn->prepare("SELECT `name` FROM chats");
-    $result->execute();
-    $result->store_result();
-    $result->bind_result($cont);
-    $result->fetch();
-    $result->close();
-    $result4 = $cont;
+    $result = $conn->query("SELECT `name` FROM chats");
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $result4 .= (" " . $row['name']);
+        }
+    }
 }
 
 echo $result4;
