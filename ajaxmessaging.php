@@ -6,10 +6,10 @@
  * Time: 18:04
  */
 
-$type = $_REQUEST['type'];
-$name = $_REQUEST['name'];
-$password = $_REQUEST['password'];
-$content = $_REQUEST['content'];
+$type = $_GET['type'];
+$name = $_GET['name'];
+$password = $_GET['password'];
+$content = $_GET['content'];
 
 $servername = "sql.njit.edu";
 $username = "spg28";
@@ -33,10 +33,16 @@ if ($type == 'write') {
         $result4 = $conn->query("INSERT INTO chats (`name`, `password`, `chat_content`) VALUES (`" . $name . "`,`" . $password . "`,`" . $content . "`)");
     }
 } else if ($type == 'read'){
-    $result = $conn->query("SELECT chat_content FROM chats WHERE `name` = " . $name . " AND `password` = " . $password);
-    $result4 = $result;
+    $result = $conn->prepare("SELECT chat_content FROM chats WHERE `name` = ?");
+    $result->bind_param("s", $name);
+    $result->execute();
+    $result->store_result();
+    $result->bind_result($cont);
+    $result->fetch();
+    $result->close();
+    $result4 = $cont;
 }
 
-echo json_encode($result4);
+echo $result4;
 
 $conn->close();
