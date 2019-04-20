@@ -36,8 +36,8 @@
                 document.getElementById('error').value = this.responseText;
             }
         };
-        xmlhttp.open("POST", "ajaxmessaging.php", true);
-        xmlhttp.send("type=write&name=" + name + "&password=" + password + "&content=" + content);
+        xmlhttp.open("GET", "ajaxmessaging.php?type=write&name=" + name + "&password=" + password + "&content=" + content, true);
+        xmlhttp.send();
     }
 
     function listenMessage(name) {
@@ -49,8 +49,8 @@
                 document.getElementById('content2').value = this.responseText;
             }
         };
-        xmlhttp2.open("POST", "ajaxmessaging.php", true);
-        xmlhttp2.send("type=read&name=" + name);
+        xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
+        xmlhttp2.send();
     }
 </script>
 
