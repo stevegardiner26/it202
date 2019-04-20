@@ -33,7 +33,7 @@ if ($type == 'write') {
             $result4 = 'Error: ' . $sql . ' ' . $conn->error;
         }
     } else {
-        $sql = "INSERT INTO chats `name`=?, `password`, `chat_content`=? VALUES (".$nameP.",".$password.",".$content.")";
+        $sql = "INSERT INTO chats `name`=?, `password`, `chat_content`=? VALUES ('".$nameP."','".$password."','".$content."')";
         if($conn->query($sql)) {
             $result4 = 'Success';
         } else {
