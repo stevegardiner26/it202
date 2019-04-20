@@ -13,22 +13,30 @@ $content = $_REQUEST['content'];
 
 $servername = "sql.njit.edu";
 $username = "spg28";
-$password = "ZbkSoE9x";
+$dbpassword = "ZbkSoE9x";
 $dbname = "spg28";
+$result4 = '';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $dbpassword, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($type == 'write') {
-    $result = $conn->query("UPDATE  FROM courses WHERE `patron_id` = " . $id);
-    $sql = "SELECT * FROM patrons WHERE `patron_id` = " . $id . " AND `name`='" . $name . "'";
-    $sql = "INSERT INTO patrons (`name`, `patron_id`, `email`, `schedule`) VALUES (`" . $name . "`,`" . $id . "`,`" . $email . "`,``)";
+    $result = $conn->query("SELECT * FROM chats WHERE `name` = " . $name . " AND `password` = " . $password);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $result4 = $conn->query("UPDATE chats SET `chat_content` = ". $content ." WHERE `name` = " . $row['name'] . " AND `password`='" . $row['password'] . "'");
+        }
+    } else {
+        $result4 = $conn->query("INSERT INTO chats (`name`, `password`, `chat_content`) VALUES (`" . $name . "`,`" . $password . "`,`" . $content . "`)");
+    }
 } else {
     $result = $conn->query("SELECT chat_content FROM chats WHERE `name` = " . $name . " AND `password` = " . $password);
-    echo $result;
+    $result4 = $result;
 }
+
+echo json_encode($result4);
 
 $conn->close();
