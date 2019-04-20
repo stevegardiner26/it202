@@ -24,19 +24,22 @@ if ($conn->connect_error) {
 }
 
 if ($type == 'write') {
-    /*$result = $conn->query("SELECT * FROM chats WHERE `name` = " . $nameP . " AND `password` = " . $password);
+    $result = $conn->query("SELECT * FROM chats WHERE `name` = " . $nameP . " AND `password` = " . $password);
     if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {*/
-    $sql = "UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`='" . $nameP . "' AND `password`='" . $password . "'";
-    if($conn->query($sql)) {
-        $result4 = 'Success';
+        $sql = "UPDATE chats SET `chat_content` = '". $content ."' WHERE `name`='" . $nameP . "' AND `password`='" . $password . "'";
+        if($conn->query($sql)) {
+            $result4 = 'Success';
+        } else {
+            $result4 = 'Error: ' . $sql . ' ' . $conn->error;
+        }
     } else {
-        $result4 = 'Error: ' . $sql . ' ' . $conn->error;
+        $sql = "INSERT INTO chats `name`=?, `password`, `chat_content`=? VALUES (".$nameP.",".$password.",".$content.")";
+        if($conn->query($sql)) {
+            $result4 = 'Success';
+        } else {
+            $result4 = 'Error: ' . $sql . ' ' . $conn->error;
+        }
     }
-      /*  }
-    } else {
-        $result4 = $conn->query("INSERT INTO chats (`name`, `password`, `chat_content`) VALUES (`" . $nameP . "`,`" . $password . "`,`" . $content . "`)");
-    }*/
 } else if ($type == 'read'){
     $result = $conn->prepare("SELECT chat_content FROM chats WHERE `name` = ?");
     $result->bind_param("s", $nameP);
