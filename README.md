@@ -14,3 +14,11 @@ Javascript Form
 **Assignment 3**
 
 MySql Data Injection via PHP to Webpage
+
+**Assignment 4**
+
+MySQL Form Integration
+
+**Assignment 5**
+
+AJAX Chat Application
