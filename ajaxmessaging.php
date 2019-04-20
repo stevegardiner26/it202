@@ -34,7 +34,7 @@ if ($type == 'write') {
     }
 } else if ($type == 'read'){
     $result = $conn->query("SELECT chat_content FROM chats WHERE `name` = " . $name . " AND `password` = " . $password);
-    $result4 = $result->fetch_assoc();
+    $result4 = $result;
 }
 
 echo json_encode($result4);
