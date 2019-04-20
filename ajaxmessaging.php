@@ -6,10 +6,10 @@
  * Time: 18:04
  */
 
-$type = $_REQUEST['type'];
-$name = $_REQUEST['name'];
-$password = $_REQUEST['password'];
-$content = $_REQUEST['content'];
+$type = $_POST['type'];
+$name = $_POST['name'];
+$password = $_POST['password'];
+$content = $_POST['content'];
 
 $servername = "sql.njit.edu";
 $username = "spg28";
