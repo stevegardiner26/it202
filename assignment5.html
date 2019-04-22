@@ -50,8 +50,10 @@
                 document.getElementById('content2').value = this.responseText;
             }
         };
-        xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
-        xmlhttp2.send();
+        setInterval(function () {
+            xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
+            xmlhttp2.send();
+        }, 500);
     }
 
     function getNames() {
