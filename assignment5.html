@@ -40,7 +40,9 @@
         xmlhttp.send();
     }
 
+    var interval = null;
     function listenMessage(name) {
+        if(name == '') return;
         //make an ajax call to retrieve the chat from the name
         var xmlhttp2 = new XMLHttpRequest();
         xmlhttp2.onreadystatechange = function() {
@@ -49,10 +51,9 @@
                 document.getElementById('content2').value = this.responseText;
             }
         };
-        if(interval) {
-            clearInterval(interval);
-        }
-        var interval = setInterval(function () {
+
+        clearInterval(interval);
+        interval = setInterval(function () {
             xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
             xmlhttp2.send();
         }, 500);
