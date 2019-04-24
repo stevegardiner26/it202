@@ -19,8 +19,7 @@
         </div>
         <div class="chatc chat2">
             <label for="name2">Enter a valid name & retrieve chat on listen click</label>
-            <input name="name2" id="name2" type="text">
-            <button id="listen" onclick="listenMessage(document.getElementById('name2').value)">Listen</button>
+            <input name="name2" id="name2" type="text" onkeyup="listenMessage(document.getElementById('name2').value)">
             <textarea name="content2" id="content2" cols="30" rows="10"></textarea>
         </div>
     </div>
@@ -50,7 +49,10 @@
                 document.getElementById('content2').value = this.responseText;
             }
         };
-        setInterval(function () {
+        if(interval) {
+            clearInterval(interval);
+        }
+        var interval = setInterval(function () {
             xmlhttp2.open("GET", "ajaxmessaging.php?type=read&name=" + name, true);
             xmlhttp2.send();
         }, 500);
